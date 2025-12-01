@@ -59,3 +59,4 @@ public/
   assets/
     icons/
     images/
+```
