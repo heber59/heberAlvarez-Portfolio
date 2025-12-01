@@ -1,43 +1,61 @@
-# 📁 Portfolio Folder UI  
-A modern, full-screen personal portfolio designed as an interactive **folder-style interface**, featuring smooth page transitions, section tabs, and bilingual content (EN/ES).
+# 🚀 Portfolio Folder Interface
 
-Built with:
+This project is a personal portfolio built as a full-screen **folder-style interface** with smooth section transitions and bilingual content.  
+It serves as a UI/UX showcase and a technical demonstration of animations, state management, and modern frontend architecture.
+
+---
+
+## 🧱 Tech Stack
 
 - **Next.js 14+ (App Router)**
 - **TypeScript**
 - **Tailwind CSS**
-- **Framer Motion**
-- **React Context (Language Switch)**
-- **Manrope + Inter fonts**
-- **Deployed on Vercel**
+- **Framer Motion** (page-flip animations)
+- **React Context** (language state)
+- **next/font** (Manrope for titles, Inter for body text)
+- **Vercel** (deployment)
 
 ---
 
-## 🌟 Features
+## 🔗 Live Demo
 
-### 🗂️ Folder Interface (No Scroll)
-The entire UI behaves like a physical folder binder:
-- Centered “folder” container  
-- Vertical tabs to switch between sections  
-- Clean, elegant layout  
+You can view the deployed project here:  
+**https://your-project-url.vercel.app**
 
-### ✨ Page-Flip Animations
-Using **Framer Motion**, each section transition simulates turning a page:
-- Subtle rotateY + opacity effects  
-- Smooth, fast, polished animation  
+---
 
-### 🌐 Language Switch (EN / ES)
-- Implemented with the React Context API  
-- UI and section texts updated dynamically  
-- No reload or navigation required  
+## ⭐ Main Features
 
-### 🎨 Typography
-- **Manrope** → Titles, headers, tabs  
-- **Inter** → Body text and readable sections  
-
-This combination creates a clean, modern, and premium aesthetic.
+- Full-screen **folder/binder UI** (no scrolling)
+- Vertical **tab navigation** between sections
+- **Page-flip transition** using Framer Motion
+- **Language switch (EN/ES)** with React Context
+- Clean, minimal design with custom typography
+- Fast loading and smooth UI interactions
 
 ---
 
 ## 📁 Project Structure
 
+```txt
+app/
+  layout.tsx
+  page.tsx
+components/
+  Folder.tsx
+  PageView.tsx
+  Tabs.tsx
+  LanguageSwitcher.tsx
+context/
+  LanguageContext.tsx
+utils/
+  copy/
+    es.ts
+    en.ts
+    index.ts
+styles/
+  globals.css
+public/
+  assets/
+    icons/
+    images/
