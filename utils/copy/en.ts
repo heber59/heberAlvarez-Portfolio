@@ -34,10 +34,9 @@ high-impact interfaces that elevate the product experience.
     projects: {
       title: "Projects",
       eyebrowMain: "Selected work",
-      eyebrowMore: "More work",
       labelLink: "Link",
       labelViewProject: "View project",
-      moreProyects: "More projects and UI experiments coming soon…",
+
       items: [
         {
           id: "npm-library",
@@ -69,24 +68,23 @@ business logic, REST services and a clean interface for end users.
           image: "/assets/images/projects/ai-twilio.webp",
         },
         {
-          id: "portfolio-folder",
-          title: "Folder-style portfolio UI",
-          role: "Frontend / UI animations",
-          short: `
-Folder-style interface with a two-page layout.
-          `,
-          description: `
-Design and development of this portfolio: side tabs navigation, Framer Motion 
-animations and a two-page layout inside a folder metaphor.
-          `,
+          id: "sistema-saas",
+          title: "Sistema SaaS",
+          role: "Frontend Developer",
+          short:
+            "Interface generated and adapted to simulate a SaaS system based on real workflows.",
+          description:
+            "Development of components, layout, and navigation for a SaaS system. The UI was AI-generated and refined for demonstration purposes without exposing any sensitive information.",
           stack: [
             "React",
             "Next.js",
             "TypeScript",
             "Framer Motion",
             "Tailwind",
+            "Figma",
           ],
-          image: "/assets/images/projects/portfolio-folder.webp",
+          image: "/assets/images/saasService.png",
+          demoUrl: "https://sistemasaas.vercel.app/",
         },
       ],
     },
@@ -113,5 +111,10 @@ You can reach me at: yourname@email.com
       skills: "Skills",
       contact: "Contact",
     },
+    demo: "Show demo",
+    close: "Close",
+    stack: "Stack",
+    interactiveDemo: "Interactive demo",
+    closeDemo: "Close demo",
   },
 };

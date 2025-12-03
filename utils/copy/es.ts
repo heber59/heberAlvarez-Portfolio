@@ -35,10 +35,8 @@ interfaces sólidas, accesibles y con impacto real en la experiencia del usuario
       title: "Proyectos",
 
       eyebrowMain: "Selección de proyectos",
-      eyebrowMore: "Más proyectos",
       labelLink: "Enlace",
       labelViewProject: "Ver proyecto",
-      moreProyects: "Más proyectos y experimentos UI coming soon…",
       items: [
         {
           id: "npm-library",
@@ -70,24 +68,23 @@ lógica de negocio, servicios REST y una interfaz limpia para el usuario final.
           image: "/assets/images/projects/ai-twilio.webp",
         },
         {
-          id: "portfolio-folder",
-          title: "Portafolio tipo carpeta",
-          role: "Frontend / animaciones UI",
-          short: `
-Interfaz tipo carpeta física con layout de doble página.
-          `,
-          description: `
-Diseño y desarrollo de este portafolio: pestañas laterales, animaciones con Framer Motion 
-y composición de layout en dos hojas dentro de una metáfora de carpeta.
-          `,
+          id: "sistema-saas",
+          title: "Sistema SaaS",
+          role: "Frontend Developer",
+          short:
+            "Interfaz generada y adaptada para simular un sistema SaaS basado en flujos reales.",
+          description:
+            "Construcción de componentes, estructura y navegación de un sistema SaaS. La UI fue generada por IA y ajustada para fines de demostración sin exponer información sensible.",
           stack: [
             "React",
             "Next.js",
             "TypeScript",
             "Framer Motion",
             "Tailwind",
+            "Figma",
           ],
-          image: "/assets/images/projects/portfolio-folder.webp",
+          image: "/assets/images/saasService.png",
+          demoUrl: "https://sistemasaas.vercel.app/",
         },
       ],
     },
@@ -114,5 +111,10 @@ Puedes contactarme en: tunombre@correo.com
       skills: "Skills",
       contact: "Contacto",
     },
+    demo: "Ver demo",
+    close: "Cerrar",
+    stack: "Stack",
+    interactiveDemo: "Demo interactiva",
+    closeDemo: "Cerrar demo",
   },
 } as const;

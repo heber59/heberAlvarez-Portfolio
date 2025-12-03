@@ -13,13 +13,13 @@ type Project = {
   stack: readonly string[];
   image: string;
   link?: string;
+  demoUrl?: string;
 };
 
 export function Projects({ secondPage }: { secondPage?: boolean }) {
   const { lang } = useLanguage();
   const cProjects = copy[lang].sections.projects;
   const projects = cProjects.items;
-  const eyebrow = secondPage ? cProjects.eyebrowMore : cProjects.eyebrowMain;
 
   const firstPageProjects = projects.slice(0, 2);
   const secondPageProjects = projects.slice(2);
@@ -28,6 +28,7 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
   const [activeProject, setActiveProject] = useState<Project | undefined>(
     undefined
   );
+  const [showDemo, setShowDemo] = useState(false);
 
   return (
     <>
@@ -40,7 +41,7 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
         {!secondPage && (
           <div className="flex flex-col gap-2">
             <p className="font-manrope text-[11px] font-semibold uppercase tracking-[0.26em] text-slate-400">
-              {eyebrow}
+              {cProjects.eyebrowMain}
             </p>
 
             <h2 className="font-manrope text-2xl md:text-3xl font-semibold text-slate-900">
@@ -54,7 +55,10 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
             <button
               key={project.id}
               type="button"
-              onClick={() => setActiveProject(project)}
+              onClick={() => {
+                setActiveProject(project);
+                setShowDemo(false);
+              }}
               className="group h-[80%] flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white/80 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
               <div className="relative aspect-video overflow-hidden">
@@ -94,14 +98,6 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
               </div>
             </button>
           ))}
-
-          {secondPage && secondPageProjects.length === 1 && (
-            <div className="hidden md:block rounded-2xl border border-dashed border-slate-200 bg-slate-50/40 px-4 py-3">
-              <p className="font-inter text-xs text-slate-500">
-                {cProjects.moreProyects}
-              </p>
-            </div>
-          )}
         </div>
       </div>
 
@@ -119,13 +115,28 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
                 </h3>
               </div>
 
-              <button
-                type="button"
-                onClick={() => setActiveProject(undefined)}
-                className="rounded-full border border-slate-200 bg-white px-2 py-1 text-xs font-medium text-slate-500 hover:bg-slate-50"
-              >
-                {lang === "es" ? "Cerrar" : "Close"}
-              </button>
+              <div className="flex items-center gap-2">
+                {activeProject.demoUrl && (
+                  <button
+                    type="button"
+                    onClick={() => setShowDemo(true)}
+                    className="h-10 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600 hover:bg-blue-300"
+                  >
+                    {lang === "es" ? "Ver demo" : "View demo"}
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveProject(undefined);
+                    setShowDemo(false);
+                  }}
+                  className="h-10 rounded-full border border-slate-200 bg-white px-2 py-1 text-xs font-medium text-slate-500 hover:bg-red-200"
+                >
+                  {lang === "es" ? "Cerrar" : "Close"}
+                </button>
+              </div>
             </div>
 
             <div className="grid gap-4 px-6 pb-5 pt-4 md:grid-cols-[1.4fr_1fr] md:gap-6">
@@ -137,13 +148,12 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
                     className="h-full w-full object-cover"
                   />
                 </div>
-
-                <p className="font-inter text-sm md:text-base leading-relaxed text-slate-700">
-                  {activeProject.description}
-                </p>
               </div>
 
               <div className="flex flex-col gap-4">
+                <p className="font-inter text-sm md:text-base leading-relaxed text-slate-700">
+                  {activeProject.description}
+                </p>
                 <div>
                   <p className="font-manrope text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
                     {lang === "es" ? "Stack" : "Tech stack"}
@@ -179,6 +189,33 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
                 )}
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {showDemo && activeProject?.demoUrl && (
+        <div className="fixed inset-0 z-50 flex flex-col bg-slate-900/90">
+          <div className="flex items-center justify-between px-4 py-3 md:px-6 md:py-4">
+            <p className="text-xs md:text-sm font-manrope font-medium text-slate-100">
+              {activeProject.title} ·{" "}
+              {lang === "es" ? "Demo interactiva" : "Live demo"}
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setShowDemo(false)}
+              className="rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1 text-xs md:text-sm font-medium text-slate-100 hover:bg-slate-700"
+            >
+              {lang === "es" ? "Cerrar demo" : "Close demo"}
+            </button>
+          </div>
+
+          <div className="flex-1">
+            <iframe
+              src={activeProject.demoUrl}
+              className="h-full w-full border-none"
+              allowFullScreen
+            />
           </div>
         </div>
       )}
