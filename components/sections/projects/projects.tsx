@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { copy } from "@/utils/copy";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 type Project = {
   id: string;
@@ -19,6 +20,7 @@ type Project = {
 export function Projects({ secondPage }: { secondPage?: boolean }) {
   const { lang } = useLanguage();
   const cProjects = copy[lang].sections.projects;
+  const uiProjects = copy[lang].ui;
   const projects = cProjects.items;
 
   const firstPageProjects = projects.slice(0, 2);
@@ -122,7 +124,7 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
                     onClick={() => setShowDemo(true)}
                     className="h-10 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600 hover:bg-blue-300"
                   >
-                    {lang === "es" ? "Ver demo" : "View demo"}
+                    {uiProjects.demo}
                   </button>
                 )}
 
@@ -134,7 +136,7 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
                   }}
                   className="h-10 rounded-full border border-slate-200 bg-white px-2 py-1 text-xs font-medium text-slate-500 hover:bg-red-200"
                 >
-                  {lang === "es" ? "Cerrar" : "Close"}
+                  {uiProjects.close}
                 </button>
               </div>
             </div>
@@ -156,7 +158,7 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
                 </p>
                 <div>
                   <p className="font-manrope text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    {lang === "es" ? "Stack" : "Tech stack"}
+                    {uiProjects.stack}
                   </p>
 
                   <div className="mt-2 flex flex-wrap gap-1.5">
@@ -197,16 +199,14 @@ export function Projects({ secondPage }: { secondPage?: boolean }) {
         <div className="fixed inset-0 z-50 flex flex-col bg-slate-900/90">
           <div className="flex items-center justify-between px-4 py-3 md:px-6 md:py-4">
             <p className="text-xs md:text-sm font-manrope font-medium text-slate-100">
-              {activeProject.title} ·{" "}
-              {lang === "es" ? "Demo interactiva" : "Live demo"}
+              {activeProject.title} · {uiProjects.interactiveDemo}
             </p>
-
             <button
               type="button"
               onClick={() => setShowDemo(false)}
               className="rounded-full border border-slate-600 bg-slate-800/80 px-3 py-1 text-xs md:text-sm font-medium text-slate-100 hover:bg-slate-700"
             >
-              {lang === "es" ? "Cerrar demo" : "Close demo"}
+              {uiProjects.closeDemo}
             </button>
           </div>
 
